@@ -1,4 +1,5 @@
 import AnimeList from "@/components/AnimeList";
+import Link from "next/link";
 
 export default async function Home() {
 
@@ -26,9 +27,14 @@ export default async function Home() {
       {/* Top Anime Section */}
       <section className="px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6 text-center">
-            🏆 Top Anime Terpopuler
-          </h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6 text-center">
+              🏆 Top Anime Terpopuler
+            </h2>
+            <Link href="/popular" className="text-lg text-white/80 hover:text-white hover:underline">
+              Lihat Semua
+            </Link>
+          </div>
           <AnimeList animeList={data.data} />
         </div>
       </section>

@@ -14,8 +14,10 @@ interface Anime {
 
 const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
   const { keyword } = await params;
+
+  const decodedKeyword = decodeURI(keyword);
   
-  const res = await fetch(`https://api.jikan.moe/v4/anime?q=${keyword.replace(/ /g, '%20')}&limit=8`);
+  const res = await fetch(`https://api.jikan.moe/v4/anime?q=${decodedKeyword}&limit=8`);
   const data = await res.json();
   
   return (
@@ -26,7 +28,7 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
           <h1 className="text-2xl lg:text-3xl font-bold text-white mb-2">
             🔍 Hasil Pencarian untuk{' '}
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-              &quot;{keyword.replace(/%20/g, ' ')}&quot;
+              &quot;{decodedKeyword}&quot;
             </span>
           </h1>
           <p className="text-white/70">
