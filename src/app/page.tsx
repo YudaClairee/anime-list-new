@@ -1,10 +1,10 @@
 import AnimeList from "@/components/AnimeList";
+import { getAnimeResponse } from "@/services/getAnimeResponse";
 import Link from "next/link";
 
 export default async function Home() {
 
-  const res = await fetch('https://api.jikan.moe/v4/top/anime?limit=8');
-  const data = await res.json();
+  const data = await getAnimeResponse('top/anime', 'limit=8');
 
   return (
     <div className="space-y-8">

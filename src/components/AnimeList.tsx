@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 interface Anime {
@@ -20,7 +21,7 @@ const AnimeList = ({ animeList }: AnimeListProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
       {animeList.map((anime) => (
-        <div 
+        <Link href={`/detail/${anime.mal_id}`} 
           key={anime.mal_id} 
           className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/15"
         >
@@ -39,7 +40,7 @@ const AnimeList = ({ animeList }: AnimeListProps) => {
               {anime.title}
             </h2>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   )

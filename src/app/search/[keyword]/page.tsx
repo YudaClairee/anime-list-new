@@ -1,4 +1,6 @@
+import { getAnimeResponse } from '@/services/getAnimeResponse';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 interface Anime {
@@ -17,8 +19,7 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
 
   const decodedKeyword = decodeURI(keyword);
   
-  const res = await fetch(`https://api.jikan.moe/v4/anime?q=${decodedKeyword}&limit=8`);
-  const data = await res.json();
+  const data = await getAnimeResponse('anime', `q=${decodedKeyword}`);
   
   return (
     <div className="min-h-screen py-8">
@@ -39,8 +40,9 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
         {/* Search Results Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
           {data.data.map((anime: Anime) => (
-            <div 
+            <Link 
               key={anime.mal_id} 
+              href={`/detail/${anime.mal_id}`}
               className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/15"
             >
               <div className="relative overflow-hidden">
@@ -58,7 +60,7 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
                   {anime.title}
                 </h2>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
