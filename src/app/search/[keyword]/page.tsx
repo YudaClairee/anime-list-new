@@ -1,44 +1,31 @@
-import { getAnimeResponse } from '@/services/getAnimeResponse';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
-
-interface Anime {
-  mal_id: number;
-  title: string;
-  images: {
-    webp: {
-      image_url: string;
-    };
-  };
-}
-
+import { getAnimeResponse } from "@/services/getAnimeResponse";
+import AnimeList from "@/components/AnimeList";
+import React from "react";
 
 const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
   const { keyword } = await params;
 
   const decodedKeyword = decodeURI(keyword);
-  
-  const data = await getAnimeResponse('anime', `q=${decodedKeyword}`);
-  
+
+  const data = await getAnimeResponse("anime", `q=${decodedKeyword}`);
+
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-6">
         {/* Search Results Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-            🔍 Hasil Pencarian untuk{' '}
+            🔍 Hasil Pencarian untuk{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
               &quot;{decodedKeyword}&quot;
             </span>
           </h1>
-          <p className="text-white/70">
-            Ditemukan {data.data.length} anime
-          </p>
+          <p className="text-white/70">Ditemukan {data.data.length} anime</p>
         </div>
 
         {/* Search Results Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+        <AnimeList animeList={data.data} />
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
           {data.data.map((anime: Anime) => (
             <Link 
               key={anime.mal_id} 
@@ -62,7 +49,7 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
               </div>
             </Link>
           ))}
-        </div>
+        </div> */}
 
         {/* No Results Message */}
         {data.data.length === 0 && (
@@ -78,7 +65,7 @@ const SearchedAnime = async ({ params }: { params: { keyword: string } }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchedAnime
+export default SearchedAnime;
