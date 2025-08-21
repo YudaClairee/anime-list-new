@@ -78,7 +78,7 @@ const page = async ({ params }: { params: { id: string } }) => {
           {/* Stats Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
             <div className="p-1 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-500">
-              <div className="bg-custom w-full h-full p-3 rounded-md">
+              <div className="bg-background w-full h-full p-3 rounded-md">
                 <h3 className="text-white text-sm font-bold mb-1">Tipe</h3>
                 <p className="text-white text-lg font-semibold">
                   {data.data.type}
@@ -87,7 +87,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="p-1 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-500">
-              <div className="bg-custom w-full h-full p-3 rounded-md">
+              <div className="bg-background w-full h-full p-3 rounded-md">
                 <h3 className="text-white text-sm font-bold mb-1">Status</h3>
                 <p className="text-white text-lg font-semibold">
                   {data.data.status}
@@ -96,7 +96,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="p-1 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-500">
-              <div className="bg-custom w-full h-full p-3 rounded-md">
+              <div className="bg-background w-full h-full p-3 rounded-md">
                 <h3 className="text-white text-sm font-bold mb-1">Episode</h3>
                 <p className="text-white text-lg font-semibold">
                   {data.data.episodes || "N/A"}
@@ -105,7 +105,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="p-1 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-500">
-              <div className="bg-custom w-full h-full p-3 rounded-md">
+              <div className="bg-background w-full h-full p-3 rounded-md">
                 <h3 className="text-white text-sm font-bold mb-1">Ranking</h3>
                 <p className="text-white text-lg font-semibold">
                   #{data.data.rank || "N/A"}
@@ -114,7 +114,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="p-1 rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500">
-              <div className="bg-custom w-full h-full p-3 rounded-md">
+              <div className="bg-background w-full h-full p-3 rounded-md">
                 <h3 className="text-white text-sm font-bold mb-1">Score</h3>
                 <p className="text-white text-lg font-semibold">
                   ⭐ {data.data.score || "N/A"}

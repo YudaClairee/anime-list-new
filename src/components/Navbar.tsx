@@ -1,7 +1,7 @@
 import React from "react";
 import SearchInput from "./searchInput";
 import Link from "next/link";
-import { LoginButton } from "./LoginButton";
+import AuthButton from "./AuthButton";
 
 const Navbar = () => {
   return (
@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex-1 max-w-md ml-8">
           <SearchInput />
         </div>
-        <LoginButton />
+        <AuthButton />
       </div>
     </nav>
   );
