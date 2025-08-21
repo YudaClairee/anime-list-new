@@ -2,8 +2,8 @@
 
 import { Session } from "next-auth";
 import { LoginButton } from "./LoginButton";
-import { signInAction, signOutAction } from "@/lib/actions/auth";
-import SignOutButton from "./SignOutButton";
+import { signInAction } from "@/lib/actions/auth";
+import SignOutButton from "@/components/SignOutButton";
 import { ProfilePicClient } from "@/components/ProfilePicClient";
 
 interface AuthButtonClientProps {
@@ -15,16 +15,12 @@ export function AuthButtonClient({ session }: AuthButtonClientProps) {
     signInAction();
   };
 
-  const handleLogout = () => {
-    signOutAction();
-  };
-
   return (
     <div>
       {session ? (
         <div className="flex items-center gap-2">
           <ProfilePicClient session={session} />
-          <SignOutButton handleLogout={handleLogout} />
+          <SignOutButton />
         </div>
       ) : (
         <LoginButton handleLogin={handleLogin} />
